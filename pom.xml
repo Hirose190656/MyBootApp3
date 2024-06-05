@@ -4,17 +4,19 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example.mybootapp3</groupId>
-  <artifactId>MyBootApp2</artifactId>
-  <version>1.0-SNAPSHOT</version>
+	<groupId>com.example.MyBootApp5</groupId>
+	<artifactId>mybootapp5</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
   
   <parent>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-parent</artifactId>
-	<version>3.2.4</version>
+	<version>3.2.5</version>
+	<relativePath/> <!-- lookup parent from repository -->
   </parent>
 
-  <name>mybootapp3</name>
+  <name>mybootapp5</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -25,9 +27,21 @@
   </properties>
 
   <dependencies>
+	<dependency>
+		<groupId>org.apache.tomcat.embed</groupId>
+		<artifactId>tomcat-embed-jasper</artifactId>
+		<version>10.1.24</version>
+	</dependency>
+
  	<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<optional>true</optional>
 	</dependency>
 	
     <dependency>
@@ -40,9 +54,17 @@
 
 	<build>
 		<plugins>
-			<plugin>			   
-				<groupId>org.springframework.boot</groupId>	
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
